@@ -11,6 +11,8 @@ function Register() {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const navigate = useNavigate();
+    const [answer, setAnswer] = useState("");
+
 
 //form function
 //console.log(process.env.REACT_APP_BASE_URL)
@@ -23,6 +25,7 @@ const handleSubmit = async (e) =>{
             password,
             phone,
             address,
+            answer
           });
           if (res) {
             toast.success(res.data.message);
@@ -37,8 +40,8 @@ const handleSubmit = async (e) =>{
 }
 
   return (
-    <Layout title="Register - Ecommerce App">
-<div className="form-container ">
+    <Layout title="Register - Ecommer App">
+      <div className="form-container ">
         <form onSubmit={handleSubmit}>
           <h4 className="title">REGISTER FORM</h4>
           <div className="mb-3">
@@ -94,6 +97,17 @@ const handleSubmit = async (e) =>{
               className="form-control"
               id="exampleInputEmail1"
               placeholder="Enter Your Address"
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              className="form-control"
+              id="exampleInputEmail1"
+              placeholder="What is Your Favorite sports"
               required
             />
           </div>

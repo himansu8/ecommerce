@@ -1,13 +1,15 @@
 import React from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { useAuth } from '../../context/auth';
 
 function PrivateRoutes() {
-    const isAuth =  localStorage.getItem("auth")
+    const [auth] = useAuth();
+    //const isAuth =  localStorage.getItem("auth")
     //console.log(isAuth)
     const location = useLocation();
   return (
     <>
-    {isAuth ? <Outlet/> : <Navigate to="/login" state={{ from: location }}/>}
+    {auth?.user?.role === 0 ? <Outlet/> : <Navigate to="/login" state={{ from: location }}/>}
     </>
   )
 }
