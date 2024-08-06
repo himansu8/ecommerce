@@ -3,7 +3,7 @@ import cors from 'cors'
 import './dbConnect.js'
 import authRoutes from './routes/authRoute.js'
 import categoryRoutes from './routes/categoryRoutes.js'
-
+import productRoutes from './routes/productRoutes.js'
 
 const app = express();
 const port = 8080;
@@ -23,7 +23,7 @@ app.options('*', cors(corsOptions));
 
 app.use("/api/auth", authRoutes)
 app.use("/api/category", categoryRoutes)
-
+app.use("/api/product", productRoutes)
 
 
 app.get('/',(req,res)=>{
